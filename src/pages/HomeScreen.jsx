@@ -16,12 +16,15 @@ import {
 	FaChevronLeft,
 	FaChevronRight,
 } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { PiFireFill } from "react-icons/pi";
+import { IoLanguageSharp } from "react-icons/io5";
+
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import img1 from "../assets/blackish.jpg";
 import img2 from "../assets/despicable.jpg";
@@ -116,6 +119,30 @@ function HomeScreen() {
 		},
 	];
 
+	const footerLinks = [
+		{
+			title: "Questions? Contact us.",
+			links: ["FAQ", "Investor Relations", "Privacy", "Speed Test"],
+		},
+		{
+			title: null,
+			links: ["Jobs", "Help Center", "Privacy", "Speed Test"],
+		},
+		{
+			title: null,
+			links: [
+				"Account",
+				"Ways to watch",
+				"Corporate information",
+				"Only on Akeray",
+			],
+		},
+		{
+			title: null,
+			links: ["Medical Center", "Terms of use", "Contact us"],
+		},
+	];
+
 	const [movies, setMovies] = useState([]);
 	const [maxRating, setMaxRating] = useState(5);
 	const [filteredMovies, setFilteredMovies] = useState([]);
@@ -180,11 +207,11 @@ function HomeScreen() {
 						<span>
 							<IoIosNotifications />
 						</span>
-						<button type='button' className='btn btn-outline-light'>
+						<Link className='btn btn-outline-light'to='/sign' >
 							<div className='btn-icon'>
 								<GiWaterSplash />
 							</div>
-						</button>
+						</Link>
 					</div>
 				</div>
 			</nav>
@@ -338,9 +365,9 @@ function HomeScreen() {
 							<option value='release_date'>Release Date</option>
 						</select>
 						<select>
-							<option value='latest'>A -Z </option>
+							<option value='alphabet'>A -Z </option>
 							<option value='popularity'>Rating</option>
-							<option value='rating'>View</option>
+							<option value='view'>View</option>
 							<option value='release_date'>Release Date</option>
 						</select>
 					</div>
@@ -392,6 +419,30 @@ function HomeScreen() {
 					))}
 				</div>
 			</div>
+			<footer className='footer'>
+				<div className='footer-content'>
+					{footerLinks.map((section, index) => (
+						<div className='footer-column' key={index}>
+							{section.title && <p className='footer-title'>{section.title}</p>}
+							<ul className='footer-links'>
+								{section.links.map((link, idx) => (
+									<li key={idx} className='footer-link'>
+										{link}
+									</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+				<div className='footer-language'>
+					<IoLanguageSharp/>
+					<select className='language-button'>
+						<option value='amharic'>Amharic</option>
+						<option value='english'>English</option>
+						<option value='french'>French</option>
+					</select>
+				</div>
+			</footer>
 		</div>
 	);
 }
