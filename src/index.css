@@ -4,7 +4,6 @@
   margin: 0px;
   box-sizing: border-box;
 }
-
 :root {
   --linear-grad: linear-gradient(to right, #141E30, #243B55);
   --grad-clr1: #141E30;
@@ -205,6 +204,11 @@ body::-webkit-scrollbar-thumb {
 }
 .home-content-three {
 	margin-top: 5em;
+  margin-right: 2.1em;
+}
+.home-swiper {
+  margin: 0 auto;
+  position: relative; 
 }
 .genre {
 	display: flex;
@@ -259,22 +263,30 @@ body::-webkit-scrollbar-thumb {
 	background-color: #ad64d0;
 	border-radius: 50%;
 }
-.swiper-button-prev,
-.swiper-button-next {
-	color: white;
-	font-size: 18px;
-	border-radius: 50%;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 10;
+.home-swiper .swiper-button-prev,
+.home-swiper .swiper-button-next {
+  position: absolute !important;
+  top: 50% !important;
+  z-index: 10;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white !important;
 }
-.swiper-button-prev {
-	left: 10px;
+.home-swiper .swiper-button-prev {
+  left: 2px !important;
 }
-.swiper-button-next {
-	right: 10px;
+.home-swiper .swiper-button-next {
+  right: -30px !important;
 }
+.home-swiper .swiper-button-prev::after,
+.home-swiper .swiper-button-next::after {
+  content: none !important;
+}
+.home-swiper .icon-home-swiper{
+  height: 20px;
+  width: 20px;
+}
+
 .movie-container {
 	display: flex;
 	flex-direction: column;
@@ -282,7 +294,7 @@ body::-webkit-scrollbar-thumb {
 	justify-content: center;
 	width: 231px;
 	height: 325px;
-	margin: 10px 3em;
+	margin: 10px 2em;
 	border-radius: 20px;
 }
 .movie-image {
@@ -296,7 +308,7 @@ body::-webkit-scrollbar-thumb {
 	font-size: 16px;
 	color: #ffffff;
 }
-.home-content-four {
+.home-content-five {
 	display: grid;
 	grid-template-columns: repeat(6, 1fr); 
 	grid-gap: 20px;
@@ -684,4 +696,241 @@ body::-webkit-scrollbar-thumb {
     opacity: 1;
     z-index: 5;
   }
+}
+
+/* ////////// series-screen ////// */
+.series-screen .navbar .navbar-brand {
+	padding: 1em 0em;
+}
+.series-screen .navbar-nav {
+	margin: 15px 0  0 2em;
+}
+.series-screen .navbar .nav-item .nav-link {
+	padding-right: 2em;
+}
+.series-screen .nav-icons {
+	padding-top: 10px;
+  margin: 0 20px 0 23em;
+}
+.series-content {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  margin-top: 5em;
+  padding: 20px;
+  position: relative; 
+}
+.series-content .swiper {
+  width: 100%;
+  height: 450px;
+  position: relative;
+}
+.slide-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  z-index: 1; 
+  pointer-events: none; 
+}
+ .series-content .active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.99));
+  z-index: 1; 
+  pointer-events: none; 
+}
+.series-content .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  /* width: 250px; */
+  /* height: 300px; */
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.series-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  background: #e4abee4f;
+  border-radius: 50%;
+  padding: 5px 10px;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.custom-prev {
+  left: -50px;
+}
+.custom-next {
+  right: -50px;
+}
+.series-details {
+  position: absolute;
+  bottom: 5%; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 9;
+  font-size: 13px;
+}
+.series-title {
+  font-size: 2.5em;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Lobster", sans-serif;
+  line-height: 1em;
+  margin-bottom: 13px;
+}
+.series-content .buttons button {
+  align-items: center;
+  margin-top: 0;
+  width: 110px;
+  margin-right: 20px;
+	border-radius: 3px;
+	padding: 10px ;
+	gap: 4px;
+	font-size: 12px;
+}
+.series-content .buttons .btn-secondary:hover {
+	background-color: #000 !important;
+}
+.series-middle-content{
+  display: flex;
+  justify-content: space-between;
+  margin: 10em 5em;
+}
+.series-middle-content .col-one{
+  display: flex;
+}
+.series-middle-content .col-one .icon{
+  font-size: 30px;
+  margin: 0 2px;
+}
+.series-middle-content .col-one .one{
+  color: purple;
+}
+.series-middle-content .col-one .two{
+  color: yellow;
+}
+.series-middle-content .col-one p{
+  font-size: 14px;
+  width: 9em;
+  margin-left: 10px;
+}
+.series-middle-content .col-two p{
+  font-size: 14px;
+  margin-top: 9px;
+}
+.series-middle-content .col-two .search-bar{
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  border-radius: 3px;
+  padding: 2px 20px;
+  width: 30em;
+  border: 1.5px solid #9A9A9A;
+}
+.series-middle-content .col-two .search-bar p{
+  font-size: 16px;
+}
+.series-middle-content .col-two .search-bar input{
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+.series-middle-content .col-two .search-bar input::placeholder{
+  font-size: 16px;
+}
+.series-middle-content .col-three .social-icons{
+  margin-top: -10px;
+  display: flex;
+  justify-content: space-around;
+}
+.series-last-content {
+	margin-top: 5em;
+  margin-right: 3em;
+  margin: 7em;
+}
+.series-last-content h2{
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.series-last-content p{
+  text-align: center;
+  font-size: 20px;
+}
+.series-swiper {
+  margin: 0 auto;
+  margin-top: 4em;
+  position: relative; 
+}
+.series-swiper .swiper-button-prev,
+.series-swiper .swiper-button-next {
+  position: absolute !important;
+  top: 0 !important;
+  z-index: 10;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white !important;
+  background-color: #ab9bb549;
+  border-radius: 50%;
+  width: 40px;
+}
+.swiper-buttons-container {
+  position: absolute;
+  top: -10px; 
+  right: 100px; 
+}
+.series-swiper .swiper-button-next {
+  right: -100px !important;
+}
+.series-swiper .swiper-button-prev::after,
+.series-swiper .swiper-button-next::after {
+  content: none !important;
+}
+.series-swiper .icon-series-swiper{
+  height: 15px;
+  width: 15px;
+}
+.series-container {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+	width: 220px;
+	height: 100%;
+	margin: 10px ;
+	border-radius: 20px;
+}
+.series-container .series-image {
+	height: 170px;
+	border-radius: 2px;
+}
+.series-container .series-text {
+  margin: 0;
+	margin-top: 17px;
+	font-size: 14px;
+}
+.series-container p{
+  margin-top: 5px;
+	font-size: 12px;
 }

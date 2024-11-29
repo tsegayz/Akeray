@@ -176,9 +176,9 @@ function HomeScreen() {
 	return (
 		<div className='home-screen'>
 			<nav className='navbar navbar-expand-lg navbar-light bg-black'>
-				<a className='navbar-brand' href='#'>
+				<Link className='navbar-brand' to='/'>
 					Akeray
-				</a>
+				</Link>
 				<button
 					className='navbar-toggler'
 					type='button'
@@ -194,9 +194,9 @@ function HomeScreen() {
 					<ul className='navbar-nav mr-auto'>
 						{links.map((item) => (
 							<li className='nav-item active' key={item.link}>
-								<a className='nav-link' href='#'>
+								<Link className='nav-link' to={item.link}>
 									{item.title}
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>
@@ -207,7 +207,7 @@ function HomeScreen() {
 						<span>
 							<IoIosNotifications />
 						</span>
-						<Link className='btn btn-outline-light'to='/sign' >
+						<Link className='btn btn-outline-light' to='/sign'>
 							<div className='btn-icon'>
 								<GiWaterSplash />
 							</div>
@@ -253,7 +253,6 @@ function HomeScreen() {
 											</span>
 											Watch
 										</button>
-
 										<button className='btn btn-success btn-lg shadow d-flex align-items-center'>
 											<span className='icon'>
 												<FaPlus />
@@ -295,38 +294,39 @@ function HomeScreen() {
 						</p>
 					))}
 				</div>
-				<Swiper
-					modules={[Navigation]}
-					navigation={{
-						prevEl: ".swiper-button-prev",
-						nextEl: ".swiper-button-next",
-					}}
-					spaceBetween={20}
-					slidesPerView={5}
-					loop={false}
-				>
-					{movies.map((item) => (
-						<SwiperSlide key={item.id}>
-							<div className='movie-container'>
-								<img
-									src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-									alt={`movie ${item.id + 1}`}
-									className='movie-image'
-								/>
-								<p className='movie-text'>{item.original_title}</p>
-							</div>
-						</SwiperSlide>
-					))}
+				<div className='home-swiper'>
+					<Swiper
+						modules={[Navigation]}
+						navigation={{
+							prevEl: ".swiper-button-prev", 
+							nextEl: ".swiper-button-next",
+						}}
+						spaceBetween={20}
+						slidesPerView={5}
+						loop={false}
+					>
+						{movies.map((item) => (
+							<SwiperSlide key={item.id}>
+								<div className='movie-container'>
+									<img
+										src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+										alt={`movie ${item.id + 1}`}
+										className='movie-image'
+									/>
+									<p className='movie-text'>{item.original_title}</p>
+								</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
 					<div className='swiper-button-prev'>
-						<FaChevronLeft />
+						<FaChevronLeft className='icon-home-swiper' />
 					</div>
 					<div className='swiper-button-next'>
-						<FaChevronRight />
+						<FaChevronRight className='icon-home-swiper' />
 					</div>
-				</Swiper>
+				</div>
 			</div>
-
-			<div className='home-content-three'>
+			<div className='home-content-four'>
 				<div className='collection'>
 					{collectionsTwo.map((item) => (
 						<div
@@ -390,7 +390,7 @@ function HomeScreen() {
 					</div>
 				</section>
 
-				<div className='home-content-four'>
+				<div className='home-content-five'>
 					{filteredMovies.slice(0, 12).map((item) => (
 						<div className='show-container' key={item.id}>
 							<img
@@ -435,7 +435,7 @@ function HomeScreen() {
 					))}
 				</div>
 				<div className='footer-language'>
-					<IoLanguageSharp/>
+					<IoLanguageSharp />
 					<select className='language-button'>
 						<option value='amharic'>Amharic</option>
 						<option value='english'>English</option>
