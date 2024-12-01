@@ -204,10 +204,10 @@ body::-webkit-scrollbar-thumb {
 }
 .home-content-three {
 	margin-top: 5em;
-  margin-right: 2.1em;
+  margin-right: 1.6em;
 }
 .home-swiper {
-  margin: 0 auto;
+  margin: 0 30px;
   position: relative; 
 }
 .genre {
@@ -231,14 +231,14 @@ body::-webkit-scrollbar-thumb {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 130px;
-	margin: 2em 10em;
+	gap: 180px;
+	margin: 2.5em 7em;
 	border-bottom: 1px solid rgb(65, 64, 64);
 }
 .collection-item {
 	display: flex;
 	position: relative;
-	padding: 5px 30px;
+	padding: 5px 20px;
 	font-size: 18px;
 	border-radius: 20px;
 	cursor: pointer;
@@ -273,10 +273,10 @@ body::-webkit-scrollbar-thumb {
   color: white !important;
 }
 .home-swiper .swiper-button-prev {
-  left: 2px !important;
+  left: -10px !important;
 }
 .home-swiper .swiper-button-next {
-  right: -30px !important;
+  right: -35px !important;
 }
 .home-swiper .swiper-button-prev::after,
 .home-swiper .swiper-button-next::after {
@@ -286,15 +286,14 @@ body::-webkit-scrollbar-thumb {
   height: 20px;
   width: 20px;
 }
-
 .movie-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	width: 231px;
-	height: 325px;
-	margin: 10px 2em;
+	width: 225px;
+	height: 310px;
+	margin: 10px 1.6em;
 	border-radius: 20px;
 }
 .movie-image {
@@ -699,25 +698,25 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* ////////// series-screen ////// */
-.series-screen .navbar .navbar-brand {
+.series-nav-bar .navbar .navbar-brand {
 	padding: 1em 0em;
 }
-.series-screen .navbar-nav {
-	margin: 15px 0  0 2em;
+.series-nav-bar .navbar-nav {
+	margin: 15px 0  0 1.5em;
 }
-.series-screen .navbar .nav-item .nav-link {
-	padding-right: 2em;
+.series-nav-bar .navbar .nav-item .nav-link {
+	padding-right: 1.8em;
 }
-.series-screen .nav-icons {
+.series-nav-bar .nav-icons {
 	padding-top: 10px;
-  margin: 0 20px 0 23em;
+  margin: 0 20px 0 27em;
 }
 .series-content {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
   margin-top: 5em;
-  padding: 20px;
+  padding: 10px;
   position: relative; 
 }
 .series-content .swiper {
@@ -791,6 +790,7 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   z-index: 9;
   font-size: 13px;
+  color: white;
 }
 .series-title {
   font-size: 2.5em;
@@ -852,8 +852,13 @@ body::-webkit-scrollbar-thumb {
   font-size: 16px;
 }
 .series-middle-content .col-two .search-bar input{
+  width: 24em;
   background-color: transparent;
   color: white;
+  border: none;
+}
+.series-middle-content .col-two .search-bar input:focus{
+  outline: none;
   border: none;
 }
 .series-middle-content .col-two .search-bar input::placeholder{
@@ -934,3 +939,89 @@ body::-webkit-scrollbar-thumb {
   margin-top: 5px;
 	font-size: 12px;
 }
+
+/* /////    each series /////// */
+.each-series-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  margin-top: 3em;
+  position: relative; 
+}
+.each-series-content h1{
+  font-family: lobster;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+.each-series-content .active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); 
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.99));
+  z-index: 1; 
+  pointer-events: none; 
+}
+.each-series-content .swiper-slide {
+  overflow: hidden;
+}
+.each-series-content .swiper {
+  width: 100%;
+  height: 450px;
+  position: relative;
+}
+.each-series-content .swiper-slide {
+	background: linear-gradient(to bottom, #f0c1fa, #420369);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.each-series-content .swiper-slide img {
+  width: 800px;
+  height: auto;
+  border-radius: 10px;
+}
+.each-series-content .active .season-card h3 {
+  z-index: 2;
+  position: absolute;
+  bottom: 40px; 
+  left: 60px; 
+  color: white;
+  font-size: 2.3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.season-indicator{
+  width: 25.2em;
+  overflow: auto;
+  font-size: 20px;
+  background-color: #676561;
+  margin-top: 3em;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.season-indicator::-webkit-scrollbar {
+  display: none;
+}
+.season-indicator {
+  scrollbar-width: none;
+}
+.season-indicator {
+  -ms-overflow-style: none; 
+}
+.season-indicator .box {
+  padding: 15px 30px;
+}
+.season-indicator .box.active-indicator {
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+

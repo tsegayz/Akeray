@@ -1,14 +1,10 @@
 import {
-	IoIosNotifications,
-	IoIosSearch,
 	IoIosArrowForward,
 	IoIosArrowBack,
 	IoLogoTwitter,
 } from "react-icons/io";
 import { BsTwitterX } from "react-icons/bs";
 import { TfiApple } from "react-icons/tfi";
-import { GiWaterSplash } from "react-icons/gi";
-import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
 
@@ -29,13 +25,10 @@ import {
 	FaChevronRight,
 } from "react-icons/fa";
 
+import { useNavigate } from "react-router-dom";
+import NavBar from "../components/NavBar";
+
 function SeriesScreen() {
-	const links = [
-		{ title: "Home", link: "/" },
-		{ title: "Movies", link: "/movies" },
-		{ title: "Recently Added", link: "/recentlyadded" },
-		{ title: "Series", link: "/series" },
-	];
 
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [series, setSeries] = useState([]);
@@ -57,49 +50,14 @@ function SeriesScreen() {
 		fetchData();
 	}, []);
 
+	const navigate = useNavigate();
+
+	const handleSeriesClick = (item) => {
+		navigate(`/each-series/${item.id}`, { state: { itemData: item } });
+	};
 	return (
 		<div className='series-screen'>
-			<nav className='navbar navbar-expand-lg navbar-light bg-black'>
-				<button
-					className='navbar-toggler'
-					type='button'
-					data-bs-toggle='collapse'
-					data-bs-target='#navbarSupportedContent'
-					aria-controls='navbarSupportedContent'
-					aria-expanded='false'
-					aria-label='Toggle navigation'
-				>
-					<span className='navbar-toggler-icon'></span>
-				</button>
-				<div className='collapse navbar-collapse' id='navbarSupportedContent'>
-					<ul className='navbar-nav mr-auto'>
-						{links.map((item) => (
-							<li className='nav-item active' key={item.link}>
-								<Link className='nav-link' to={item.link}>
-									{item.title}
-								</Link>
-							</li>
-						))}
-					</ul>
-				</div>
-				<Link className='navbar-brand' to='/'>
-					Akeray
-				</Link>
-				<div className='nav-icons'>
-					<span>
-						<IoIosSearch />
-					</span>
-					<span>
-						<IoIosNotifications />
-					</span>
-					<Link className='btn btn-outline-light' to='/sign'>
-						<div className='btn-icon'>
-							<GiWaterSplash />
-						</div>
-					</Link>
-				</div>
-			</nav>
-
+			<NavBar/>
 			<div className='series-content'>
 				<Swiper
 					effect='coverflow'
@@ -125,10 +83,11 @@ function SeriesScreen() {
 				>
 					{series.map((item, index) => (
 						<SwiperSlide key={item.id}>
-							<div
+							<a
 								className={`slide-content ${
 									index === activeIndex ? "active" : ""
 								}`}
+								onClick={() => handleSeriesClick(item)}
 							>
 								<img
 									src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
@@ -156,7 +115,7 @@ function SeriesScreen() {
 										</div>
 									</div>
 								)}
-							</div>
+							</a>
 						</SwiperSlide>
 					))}
 				</Swiper>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
 	IoIosNotifications,
 	IoIosSearch,
@@ -29,9 +30,8 @@ import { Link } from "react-router-dom";
 import img1 from "../assets/blackish.jpg";
 import img2 from "../assets/despicable.jpg";
 import img3 from "../assets/sune.jpeg";
-import axios from "axios";
 
-function HomeScreen() {
+function HomeScreen({ movies }) {
 	const links = [
 		{ title: "Home", link: "/" },
 		{ title: "Movies", link: "/movies" },
@@ -96,6 +96,8 @@ function HomeScreen() {
 	};
 	const handleCollectionClick = (col) => {
 		setSelectedCollection((prev) => (prev === col ? null : col));
+	};
+	const handleCollectionTwoClick = (col) => {
 		setSelectedCollectionTwo((prev) => (prev === col ? null : col));
 	};
 	const slideContent = [
@@ -143,26 +145,8 @@ function HomeScreen() {
 		},
 	];
 
-	const [movies, setMovies] = useState([]);
 	const [maxRating, setMaxRating] = useState(5);
 	const [filteredMovies, setFilteredMovies] = useState([]);
-	const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-
-	const fetchData = async () => {
-		try {
-			const response = await axios.get(
-				`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=${apiKey}`
-			);
-			const { results } = response.data;
-			setMovies(results);
-		} catch (error) {
-			console.error("Error fetching data:", error);
-		}
-	};
-
-	useEffect(() => {
-		fetchData();
-	}, []);
 
 	useEffect(() => {
 		const filtered = movies.filter((movie) => movie.vote_average >= maxRating);
@@ -275,6 +259,7 @@ function HomeScreen() {
 								selectedCollection == item.title ? "selected" : ""
 							}`}
 							key={item.title}
+							onClick={() => handleCollectionClick(item.title)}
 						>
 							<span> {item.icon}</span>
 							<p> {item.title}</p>
@@ -298,7 +283,7 @@ function HomeScreen() {
 					<Swiper
 						modules={[Navigation]}
 						navigation={{
-							prevEl: ".swiper-button-prev", 
+							prevEl: ".swiper-button-prev",
 							nextEl: ".swiper-button-next",
 						}}
 						spaceBetween={20}
@@ -334,7 +319,7 @@ function HomeScreen() {
 								selectedCollectionTwo === item.title ? "selected" : ""
 							}`}
 							key={item.title}
-							onClick={() => handleCollectionClick(item.title)}
+							onClick={() => handleCollectionTwoClick(item.title)}
 						>
 							<span>{item.icon}</span>
 							<p>{item.title}</p>
