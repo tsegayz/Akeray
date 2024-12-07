@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,6 +13,7 @@ import NavBar from "../components/NavBar";
 
 function EachSeries() {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { itemData } = location.state;
 	const [activeIndex, setActiveIndex] = useState(0);
     const [swiperInstance, setSwiperInstance] = useState(null);
@@ -31,6 +32,9 @@ function EachSeries() {
 		}
 	};
 
+	const handleSeasonClick = (item) => {
+		navigate(`/seasons/${item.id}`, { state: { itemData: item } });
+	}
     const handleIndicatorClick = (index) => {
         setActiveIndex(index); 
         swiperInstance.slideToLoop(index); 
@@ -59,7 +63,7 @@ function EachSeries() {
 						slideShadows: true,
 					}}
 					onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-					onSwiper={(swiper) => setActiveIndex(swiper)}
+					onSwiper={(swiper) => setSwiperInstance(swiper)}
 					modules={[EffectCoverflow, Navigation]}
 				>
 					{seasons.map((season, index) => (
@@ -69,6 +73,7 @@ function EachSeries() {
 									className={`series-slide-content ${
 										index === activeIndex ? "active" : ""
 									}`}
+									onClick={()=>handleSeasonClick(season)}
 								>
 									<div key={season.id} className='season-card'>
 										<img

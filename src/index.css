@@ -1017,11 +1017,14 @@ body::-webkit-scrollbar-thumb {
   -ms-overflow-style: none; 
 }
 .season-indicator .box {
-  padding: 15px 30px;
+  padding: 12px 30px;
 }
 .season-indicator .box.active-indicator {
   font-weight: bold;
   border: 2px solid white;
 }
 
+.season-screen .container{
+  height: 90vh;
+}
 

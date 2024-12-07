@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/webgi": "https://storage.googleapis.com/dist.pixotronics.com/webgi/runtime/bundle-types-0.5.5.tgz",
     "axios": "^1.7.8",
+    "framer-motion": "^11.13.1",
     "gsap": "^3.12.5",
     "icons": "^1.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",

@@ -11,7 +11,7 @@ function NavBar() {
 	];
 	return (
 		<div className='series-nav-bar'>
-			<nav className='navbar navbar-expand-lg navbar-light bg-black'>
+			<nav className='navbar navbar-expand-lg navbar-light'>
 				<button
 					className='navbar-toggler'
 					type='button'

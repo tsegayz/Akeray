@@ -7,6 +7,7 @@ import HomeScreen from "./pages/HomeScreen";
 import SignScreen from "./pages/SignScreen";
 import SeriesScreen from "./pages/SeriesScreen";
 import EachSeries from "./pages/EachSeries";
+import SeasonScreen from "./pages/SeasonScreen";
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
 						<Route path='/sign' element={<SignScreen/>} />
 						<Route path='/series' element={<SeriesScreen series={series}/>} />
 						<Route path='/each-series/:itemId' element={<EachSeries series={series}/>} />
+						<Route path='/seasons/:itemId' element={<SeasonScreen series={series}/>} />
 					</Routes>
 				</div>
 			</Router>
